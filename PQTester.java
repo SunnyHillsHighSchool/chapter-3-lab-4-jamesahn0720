@@ -15,26 +15,40 @@ public class PQTester
 
  public PQTester()
  {
+  pQueue = new PriorityQueue<String>();
  }
 
  public PQTester(String list)
  {
+  pQueue = new PriorityQueue<String>(); 
+  this.setPQ(list); 
  }
 
  public void setPQ(String list)
  {
+  String[] words = list.split("\\s"); 
+        for(String word : words) {
+            pQueue.add(word); 
+        }
  }
  
  public Object getMin()
  {
-  return "";
+ String s = pQueue.peek(); 
+        return s; 
  }
  
  public String getNaturalOrder()
  {
   String output="";
+   while(!pQueue.isEmpty()) {
+            output += pQueue.poll() + " "; 
+   }
   return output;  
  }
 
- //write a toString method
+ public String toString() // method to print all elements of the queue
+    {
+        return String.valueOf(pQueue);
+    }
 }
